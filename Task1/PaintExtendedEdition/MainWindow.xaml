@@ -1,0 +1,54 @@
+﻿    <Window x:Class="PaintExtendedEdition.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaintExtendedEdition"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="125"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59.08"/>
+            <RowDefinition Height="74.613"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TOOLS-->
+        <WrapPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center"
+                   Margin="0,16,0,46" Grid.RowSpan="2">
+            <Label x:Name="BrushSize" Content="Размер кисти"/>
+            <Slider Minimum="1" Maximum="100"
+                    x:Name="BrushSlider" ValueChanged="BrushSlider_ValueChanged"/>
+        </WrapPanel>
+        <ComboBox x:Name="Chooser" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" SelectionChanged="Chooser_SelectionChanged"
+                  >
+            <ComboBoxItem>Красный</ComboBoxItem>
+            <ComboBoxItem>Синий</ComboBoxItem>
+            <ComboBoxItem>Фиолетовый</ComboBoxItem>
+            <ComboBoxItem>Жёлтый</ComboBoxItem>
+            <ComboBoxItem>Белый</ComboBoxItem>
+        </ComboBox>
+        <WrapPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center"
+                   Margin="0,10,0,0">
+            <RadioButton Content="Рисование" GroupName="Mode"
+                         Checked="RadioButton_Ink"
+                         x:Name="InkButton"/>
+            <RadioButton Content="Редактирование" GroupName="Mode"
+                         Checked="RadioButton_Edit"/>
+            <RadioButton Content="Удаление" GroupName="Mode"
+                         Checked="RadioButton_Delete"/>
+        </WrapPanel>
+        <!--PAINT-ZONE-->
+        <InkCanvas Grid.Row="0" Grid.RowSpan="4" x:Name="Settings"
+                   EditingMode="Ink">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes Color="Red" Height="1" Width="1"/>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+
+    </Grid>
+</Window>
